@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+
+    <string name="app_name">Wakeup Touch Nexus</string>    
+    <string name="app_about">WolandSoft 2014. Version %s\n\nDeveloped by Alexander Shulgin.\n\nThe author wish to recognize Miguel Garzon for providing valuable help in testing and debugging of this application.</string>
+    <string name="app_about_label">About WTN</string>
+    
+    <!-- HEADERS -->
+    
+    <string name="pref_header_general_title">General Settings</string>
+    <string name="pref_header_general_summary">Configure general application settings.</string>  
+        
+    <string name="pref_header_thresholds_title">Time Threshold Settings</string>
+    <string name="pref_header_thresholds_summary">Configure proximity sensor delays and time threshold values.</string>
+
+    <string name="pref_header_gvector_title">Tilt Angle Settings</string>
+    <string name="pref_header_gvector_summary">Configure accelerometer sensor values to track tilt angles of the device.</string>
+    
+    <string name="pref_header_vibrate_title">Vibration Settings</string>
+    <string name="pref_header_vibrate_summary">Configure vibration periods.</string>
+    
+    <string name="pref_header_led_title">LED Settings</string>
+    <string name="pref_header_led_summary">Configure LED notification thresholds.</string>
+            
+    <!-- GENERAL -->
+    
+    <string name="pref_device_admin_enabled_title" >Device Administrator</string>
+    <string name="pref_device_admin_enabled_summary">This option will ask you for &lt;Lock the screen&gt; permission that belongs to sensitive set of permissions of Device Administrator group. This permission is required in order Lock the screen and as result, turn off the display using software button. This application will never use other permissions from Device Administrator group for any other purpose.</string>
+
+    <string name="pref_service_enabled_title">Enable Service</string>
+    <string name="pref_service_enabled_summary">Enable the main application service. This service registers cover-uncover sequences of proximity sensor and turns on the screen of the device.</string>        
+    
+    <string name="pref_suspend_on_calling_title">Suspend During a Call</string>
+    <string name="pref_suspend_on_calling_summary">Suspend proximity sensor monitoring during a call.</string>
+
+    <string name="pref_suspend_on_headset_title">Suspend When Headset is On</string>
+    <string name="pref_suspend_on_headset_summary">Suspend proximity sensor monitoring when headset is on.</string>
+
+    <string name="pref_run_service_background_title">Run Service in Background</string>
+    <string name="pref_run_service_background_summary">When checked the service will run in background mode without notification icon, but with very high chance that system will periodically kill it and proximity sensor will not register events. Not recommended for devices with less than 2 GB RAM.</string>
+    
+    <string name="pref_notification_action_title">Notification Activity</string>
+    <string name="pref_notification_action_summary">By pressing the notification icon do the following &lt;%s&gt;</string>
+	<string-array name="pref_notification_action_titles">
+	    <item>Open Settings Dialog</item>
+	    <item>Turn Off the Screen</item>
+	</string-array>  
+	
+    <string name="pref_sensor_keep_ready_title">Keep Sensor Ready</string>
+    <string name="pref_sensor_keep_ready_summary">Keep the proximity sensor registered when the screen is turned on. If unchecked then proximity sensor will be deregistered every time when screen is turned on and registered back when screen is turned off. That will save some power but also will make some delays of sensor activation after turning the screen off.</string>    
+		
+    <!-- THRESHOLDS -->
+
+    <string name="pref_sensor_cover_delay_msec_title">Covering Delay</string>
+    <string name="pref_sensor_cover_delay_msec_summary">The time period during which the sensor ignores the covering. The current value is %d msec.</string>    
+    <string name="pref_sensor_cover_delay_msec_dialog_message">Covering delay is %d msec.</string>
+    
+    <string name="pref_sensor_uncover_delay_msec_title">Uncovering Delay</string>
+    <string name="pref_sensor_uncover_delay_msec_summary">The time period during which the sensor ignores the uncovering. The current value is %d msec.</string>
+    <string name="pref_sensor_uncover_delay_msec_dialog_message">Uncovering delay is %d msec.</string> 
+        
+    <string name="pref_sensor_acceptance_window_msec_title">Uncover Acceptance Window</string>
+    <string name="pref_sensor_acceptance_window_msec_summary">The time period during which the sensor should be uncovered after covering in order to wake up the screen. The current value is %d msec.</string>
+    <string name="pref_sensor_acceptance_window_msec_dialog_message">Acceptance Window period is %d msec.</string>   
+
+    <string name="pref_wakelock_hold_sec_title" >Keep the Screen Turned On</string>
+    <string name="pref_wakelock_hold_sec_summary">Keep the screen turned on in locked mode for at least %d sec. If you have habits to use camera or other applications directly from the lock screen then set this value to "0".</string>
+    <string name="pref_wakelock_hold_sec_dialog_message">Keep the screen turned on in locked mode for at least %d sec.</string>
+    
+    <!-- GVECTOR -->
+        
+    <string name="pref_gvector_enabled_title">Enable Tilt Tracking</string>
+    <string name="pref_gvector_enabled_summary">Read values ​​from the acceleration sensor and determine proper device tilt. This will allow to temporarily block reading from proximity sensor when device is in an inverted state.</string>     
+	    
+	<string name="pref_gvector_side_view_backward_angle_title">Tilt Backward Angle</string>
+	<string name="pref_gvector_side_view_backward_angle_summary">The largest tilt backward angle of %d&#176; at which the proximity sensor is active.</string>
+	<string name="pref_gvector_side_view_backward_angle_dialog_message">The largest tilt backward angle is %d&#176;</string>
+	
+	<string name="pref_gvector_side_view_forward_angle_title">Tilt Forward Angle</string>
+	<string name="pref_gvector_side_view_forward_angle_summary">The largest tilt forward angle of %d&#176; at which the proximity sensor is active.</string>
+	<string name="pref_gvector_side_view_forward_angle_dialog_message">The largest tilt forward angle is %d&#176;</string>	
+
+	<string name="pref_gvector_bottom_view_left_angle_title">Tilt Left Angle</string>
+	<string name="pref_gvector_bottom_view_left_angle_summary">The largest tilt left angle of %d&#176; at which the proximity sensor is active.</string>
+	<string name="pref_gvector_bottom_view_left_angle_dialog_message">The largest tilt left angle is %d&#176;</string>
+	
+	<string name="pref_gvector_bottom_view_right_angle_title">Tilt Right Angle</string>
+	<string name="pref_gvector_bottom_view_right_angle_summary">The largest tilt right angle of %d&#176; at which the proximity sensor is active.</string>
+	<string name="pref_gvector_bottom_view_right_angle_dialog_message">The largest tilt right angle is %d&#176;</string>
+			
+    <!-- VIBRATE -->
+    
+    <string name="pref_sensor_cover_vibrate_enabled_title" >Vibrate When Covered</string>
+    <string name="pref_sensor_cover_vibrate_enabled_summary">Enable vibration when the proximity sensor covered.</string>
+    
+    <string name="pref_sensor_cover_vibrate_msec_title">Vibration Duration When Covered</string>
+    <string name="pref_sensor_cover_vibrate_msec_summary">Vibrate for %d msec when the proximity sensor covered.</string>
+    <string name="pref_sensor_cover_vibrate_msec_dialog_message">Vibrate for %d msec when the proximity sensor covered.</string>
+    
+    <string name="pref_sensor_uncover_vibrate_enabled_title" >Vibrate When Uncovered</string>
+    <string name="pref_sensor_uncover_vibrate_enabled_summary">Enable vibration when the proximity sensor uncovered.</string>
+    
+    <string name="pref_sensor_uncover_vibrate_msec_title" >Vibration Duration  When Uncovered</string>
+    <string name="pref_sensor_uncover_vibrate_msec_summary">Vibrate for %d msec when the proximity sensor uncovered.</string>    
+	<string name="pref_sensor_uncover_vibrate_msec_dialog_message">Vibrate for %d msec when the proximity sensor uncovered.</string>
+    
+    <!-- LED -->
+    
+    <string name="pref_sensor_cover_led_enabled_title">Light up LED Notification</string>
+    <string name="pref_sensor_cover_led_enabled_summary">Light up LED notification when sensor is covered, when possible.</string>
+    
+    <string name="pref_sensor_cover_led_yellow_title">Yellow LED Notification</string>
+    <string name="pref_sensor_cover_led_yellow_summary">Change LED\'s color to yellow when battery level below %d%%.</string>
+    <string name="pref_sensor_cover_led_yellow_dialog_message">Change color when battery level below %d%%.</string>
+    
+    <string name="pref_sensor_cover_led_red_title">Red LED Notification</string>
+    <string name="pref_sensor_cover_led_red_summary">Change LED\'s color to red when battery level below %d%%.</string>
+    <string name="pref_sensor_cover_led_red_dialog_message">Change color when battery level below %d%%.</string>
+    
+	<!-- DEVICE ADMIN -->  
+    	
+    <string name="receiver_device_admin_label">Turn Off the Screen</string>
+    <string name="receiver_device_admin_description">By granting &lt;Lock the screen&gt; permission that belongs to sensitive set of permissions of Device Administrator group you allow the Wakeup Touch Nexus to Turn Off the Screen. This permission is required for this functionality. This application will never use other permissions from Device Administrator group for any other purpose.</string>
+    
+    <!-- OTHER -->
+    
+    <string name="launcher_config_label">WTN Settings</string>
+    <string name="launcher_screen_off_label">WTN Turn Off</string>
+    <string name="activity_config_label">Open Settings Dialog</string>
+    <string name="activity_screen_off_label">Turn Off the Screen</string>     	
+    <string name="service_label">WTN Service</string>
+    	
+</resources>

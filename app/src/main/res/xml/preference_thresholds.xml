@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/pref_header_thresholds_title" >
+
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_cover_delay_msec_title"
+	        android:summary="@string/pref_sensor_cover_delay_msec_summary"
+	        android:key="@string/pref_sensor_cover_delay_msec_key"
+	        android:defaultValue="@integer/pref_sensor_cover_delay_msec_value"
+	        custom:sliderValueFrom="@integer/pref_sensor_cover_delay_msec_min_value"
+	        custom:sliderValueTo="@integer/pref_sensor_cover_delay_msec_max_value"  
+	        custom:sliderDialogMessage="@string/pref_sensor_cover_delay_msec_dialog_message" 
+		 />     
+		 
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_uncover_delay_msec_title"
+	        android:summary="@string/pref_sensor_uncover_delay_msec_summary"
+	        android:key="@string/pref_sensor_uncover_delay_msec_key"
+	        android:defaultValue="@integer/pref_sensor_uncover_delay_msec_value"
+	        custom:sliderValueFrom="@integer/pref_sensor_uncover_delay_msec_min_value"
+	        custom:sliderValueTo="@integer/pref_sensor_uncover_delay_msec_max_value"  
+	        custom:sliderDialogMessage="@string/pref_sensor_uncover_delay_msec_dialog_message" 
+		 /> 	    
+
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_acceptance_window_msec_title"
+	        android:summary="@string/pref_sensor_acceptance_window_msec_summary"
+	        android:key="@string/pref_sensor_acceptance_window_msec_key"
+	        android:defaultValue="@integer/pref_sensor_acceptance_window_msec_value"
+	        custom:sliderValueFrom="@integer/pref_sensor_acceptance_window_msec_min_value"
+	        custom:sliderValueTo="@integer/pref_sensor_acceptance_window_msec_max_value"  
+	        custom:sliderDialogMessage="@string/pref_sensor_acceptance_window_msec_dialog_message" 
+		 />     
+                
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_wakelock_hold_sec_title"
+	        android:summary="@string/pref_wakelock_hold_sec_summary"
+	        android:key="@string/pref_wakelock_hold_sec_key"
+	        android:defaultValue="@integer/pref_wakelock_hold_sec_value"
+	        custom:sliderValueFrom="@integer/pref_wakelock_hold_sec_min_value"
+	        custom:sliderValueTo="@integer/pref_wakelock_hold_sec_max_value"  
+	        custom:sliderDialogMessage="@string/pref_wakelock_hold_sec_dialog_message" 
+		 />    	    
+        
+    </PreferenceCategory>
+
+</PreferenceScreen>

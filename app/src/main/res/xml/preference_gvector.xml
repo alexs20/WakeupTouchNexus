@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/pref_header_gvector_title" >
+        <CheckBoxPreference
+            android:title="@string/pref_gvector_enabled_title"
+            android:summary="@string/pref_gvector_enabled_summary"            
+            android:key="@string/pref_gvector_enabled_key"
+            android:defaultValue="@bool/pref_gvector_enabled_value" />   
+
+    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+        android:title="@string/pref_gvector_side_view_backward_angle_title"
+        android:summary="@string/pref_gvector_side_view_backward_angle_summary"
+        android:key="@string/pref_gvector_side_view_backward_angle_key"
+        android:defaultValue="@integer/pref_gvector_side_view_backward_angle_value"  
+        custom:sliderDialogMessage="@string/pref_gvector_side_view_backward_angle_dialog_message"        
+        custom:sliderDialogIconView="com.wolandsoft.wtn.pref.custom.slider.angle.SideViewBackwardDialogIcon"
+        custom:sliderValueFrom="@integer/pref_gvector_side_view_backward_angle_min_value" 
+        custom:sliderValueToByKey="@string/pref_gvector_side_view_forward_angle_key"
+        android:dependency="@string/pref_gvector_enabled_key"
+	 />
+
+    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+        android:title="@string/pref_gvector_side_view_forward_angle_title"
+        android:summary="@string/pref_gvector_side_view_forward_angle_summary"
+        android:key="@string/pref_gvector_side_view_forward_angle_key"
+        android:defaultValue="@integer/pref_gvector_side_view_forward_angle_value"  
+        custom:sliderDialogMessage="@string/pref_gvector_side_view_forward_angle_dialog_message"      
+        custom:sliderDialogIconView="com.wolandsoft.wtn.pref.custom.slider.angle.SideViewForwardDialogIcon"
+        custom:sliderValueFromByKey="@string/pref_gvector_side_view_backward_angle_key"
+        custom:sliderValueTo="@integer/pref_gvector_side_view_forward_angle_max_value"         
+        android:dependency="@string/pref_gvector_enabled_key"
+	 />       
+	 
+    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+        android:title="@string/pref_gvector_bottom_view_left_angle_title"
+        android:summary="@string/pref_gvector_bottom_view_left_angle_summary"
+        android:key="@string/pref_gvector_bottom_view_left_angle_key"
+        android:defaultValue="@integer/pref_gvector_bottom_view_left_angle_value"  
+        custom:sliderDialogMessage="@string/pref_gvector_bottom_view_left_angle_dialog_message"        
+        custom:sliderDialogIconView="com.wolandsoft.wtn.pref.custom.slider.angle.BottomViewLeftDialogIcon"
+        custom:sliderValueFrom="@integer/pref_gvector_bottom_view_left_angle_min_value" 
+        custom:sliderValueToByKey="@string/pref_gvector_bottom_view_right_angle_key"
+        android:dependency="@string/pref_gvector_enabled_key"
+	 />
+
+    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+        android:title="@string/pref_gvector_bottom_view_right_angle_title"
+        android:summary="@string/pref_gvector_bottom_view_right_angle_summary"
+        android:key="@string/pref_gvector_bottom_view_right_angle_key"
+        android:defaultValue="@integer/pref_gvector_bottom_view_right_angle_value"  
+        custom:sliderDialogMessage="@string/pref_gvector_bottom_view_right_angle_dialog_message"      
+        custom:sliderDialogIconView="com.wolandsoft.wtn.pref.custom.slider.angle.BottomViewRightDialogIcon"
+        custom:sliderValueFromByKey="@string/pref_gvector_bottom_view_left_angle_key"
+        custom:sliderValueTo="@integer/pref_gvector_bottom_view_right_angle_max_value" 
+        android:dependency="@string/pref_gvector_enabled_key"
+	 />    
+    
+    </PreferenceCategory>
+
+</PreferenceScreen>

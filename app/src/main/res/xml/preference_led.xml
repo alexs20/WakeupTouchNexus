@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:custom="http://schemas.android.com/apk/res-auto">     
+    <PreferenceCategory
+        android:title="@string/pref_header_led_title">    
+        <CheckBoxPreference
+            android:title="@string/pref_sensor_cover_led_enabled_title"
+            android:summary="@string/pref_sensor_cover_led_enabled_summary"            
+            android:key="@string/pref_sensor_acceptance_window_led_enable_key"
+            android:defaultValue="@bool/pref_sensor_acceptance_window_led_enable_value" />        
+        
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_cover_led_yellow_title"
+	        android:summary="@string/pref_sensor_cover_led_yellow_summary"
+	        android:key="@string/pref_sensor_acceptance_window_led_yellow_level_key"
+	        android:defaultValue="@integer/pref_sensor_acceptance_window_led_yellow_level_value"
+	        custom:sliderValueFromByKey="@string/pref_sensor_acceptance_window_led_red_level_key"
+	        custom:sliderValueTo="100"  
+	        custom:sliderDialogMessage="@string/pref_sensor_cover_led_yellow_dialog_message"
+	        android:dependency="@string/pref_sensor_acceptance_window_led_enable_key"  
+		 />        
+
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_cover_led_red_title"
+	        android:summary="@string/pref_sensor_cover_led_red_summary"
+	        android:key="@string/pref_sensor_acceptance_window_led_red_level_key"
+	        android:defaultValue="@integer/pref_sensor_acceptance_window_led_red_level_value"
+	        custom:sliderValueFrom="0"
+	        custom:sliderValueToByKey="@string/pref_sensor_acceptance_window_led_yellow_level_key"  
+	        custom:sliderDialogMessage="@string/pref_sensor_cover_led_red_dialog_message"
+	        android:dependency="@string/pref_sensor_acceptance_window_led_enable_key"  
+		 /> 
+		         
+    </PreferenceCategory>     
+</PreferenceScreen>

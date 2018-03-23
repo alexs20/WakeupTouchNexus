@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">     
+    <PreferenceCategory
+        android:title="@string/pref_header_general_title">    
+        <CheckBoxPreference
+            android:title="@string/pref_device_admin_enabled_title"
+            android:summary="@string/pref_device_admin_enabled_summary"            
+            android:key="@string/pref_device_admin_enabled_key"
+            android:defaultValue="@bool/pref_device_admin_enabled_value" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/pref_service_enabled_value"
+            android:key="@string/pref_service_enabled_key"
+            android:summary="@string/pref_service_enabled_summary"
+            android:title="@string/pref_service_enabled_title" />
+        <CheckBoxPreference
+            android:dependency="@string/pref_service_enabled_key"
+            android:defaultValue="@bool/pref_suspend_on_calling_value"
+            android:key="@string/pref_suspend_on_calling_key"
+            android:summary="@string/pref_suspend_on_calling_summary"
+            android:title="@string/pref_suspend_on_calling_title" />      
+        <CheckBoxPreference
+            android:dependency="@string/pref_service_enabled_key"
+            android:defaultValue="@bool/pref_suspend_on_headset_value"
+            android:key="@string/pref_suspend_on_headset_key"
+            android:summary="@string/pref_suspend_on_headset_summary"
+            android:title="@string/pref_suspend_on_headset_title" />
+        <CheckBoxPreference
+            android:disableDependentsState="true"
+            android:dependency="@string/pref_service_enabled_key"
+            android:defaultValue="@bool/pref_run_service_background_value"
+            android:key="@string/pref_run_service_background_key"
+            android:summary="@string/pref_run_service_background_summary"
+            android:title="@string/pref_run_service_background_title" />        
+        <ListPreference
+            android:dependency="@string/pref_run_service_background_key"            
+            android:defaultValue="@string/pref_notification_action_value"
+            android:entries="@array/pref_notification_action_titles"
+            android:entryValues="@array/pref_notification_action_values"
+            android:key="@string/pref_notification_action_key"
+            android:title="@string/pref_notification_action_title" 
+            android:summary="@string/pref_notification_action_summary" />
+        <CheckBoxPreference
+            android:dependency="@string/pref_service_enabled_key"
+            android:defaultValue="@bool/pref_sensor_keep_ready_value"
+            android:key="@string/pref_sensor_keep_ready_key"
+            android:summary="@string/pref_sensor_keep_ready_summary"
+            android:title="@string/pref_sensor_keep_ready_title" />            
+    </PreferenceCategory>     
+</PreferenceScreen>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+    
+    <string name="app_name">Wakeup Touch Nexus</string>    
+    <string name="app_about">WolandSoft 2014. Версия %s\n\nАвтор приложения - Александер Шульгин.\n\nАвтор выражает благодарность Мигелю Гарсона за ценную помощь в тестировании и отладке этого приложения.</string>
+    <string name="app_about_label">О программе WTN</string>
+    <!-- HEADERS -->
+    
+    <string name="pref_header_general_title">Основные Настройки</string>
+    <string name="pref_header_general_summary">Установка основных настроек службы датчика приближения и администратора устройства</string>  
+        
+    <string name="pref_header_thresholds_title">Временные Пороги</string>
+    <string name="pref_header_thresholds_summary">Установка порогов задержек и ожидания сенсора приближения.</string>
+
+    <string name="pref_header_gvector_title">Углы наклона</string>
+    <string name="pref_header_gvector_summary">Установка настроек датчика ускорения в режиме отслеживания наклона устройства.</string>
+    
+    <string name="pref_header_vibrate_title">Вибрация</string>
+    <string name="pref_header_vibrate_summary">Настройки длительности вибрации.</string>
+        
+    <string name="pref_header_led_title">Светодиодный индикатор</string>
+    <string name="pref_header_led_summary">Настройки цветовых порогов светодиодного индикатора.</string>
+        
+    <!-- GENERAL -->
+    
+    <string name="pref_device_admin_enabled_title" >Администратор Устройства</string>
+    <string name="pref_device_admin_enabled_summary">Эта опция предложит вам активировать разрешение &lt;Блокировка экрана&gt; которое принадлежит к группе чувствительных разрешений из семейства Device Administrator. Это разрешение требуется для блокировки экрана и как результат, его выключения при использовании програмной кнопки. Это приложение никогда не будет использовать другие разрешения из группы Device Administrator для каких-либо других целей.</string>
+
+    <string name="pref_service_enabled_title">Активация службы</string>
+    <string name="pref_service_enabled_summary">Активировать главную службу приложения. Эта служба считывает последовательности закрытия-открытия датчика приближения и включает экран устройства.</string>        
+    
+    <string name="pref_suspend_on_calling_title">Приостановить во время звонка</string>
+    <string name="pref_suspend_on_calling_summary">Приостановить службу считывания данных с датчика приближения во время звонка.</string>
+
+    <string name="pref_suspend_on_headset_title">Приостановить при наушниках</string>
+    <string name="pref_suspend_on_headset_summary">Приостановить службу считывания данных с датчика приближения если подключены проводные наушники.</string>
+    
+    <string name="pref_run_service_background_title">Исполнять службу в фоновом режиме</string>
+    <string name="pref_run_service_background_summary">Служба датчика приближения будет работать в фоновом режиме без значка уведомления, но с очень высокой вероятностю того, что система будет периодически убивать ее и датчик не будет регистрировать события. Не рекомендуется для устройств с менее 2 ГБ оперативной памяти.</string>
+    
+    <string name="pref_notification_action_title">Действие Уведомления</string>
+    <string name="pref_notification_action_summary">При нажатии на значек уведомления выполнить следующее действие &lt;%s&gt;</string>
+	<string-array name="pref_notification_action_titles">
+	    <item>Открыть Настройки</item>
+	    <item>Выключить Экран</item>
+	</string-array>  
+	    
+    <string name="pref_sensor_keep_ready_title">Удерживать Датчик Активным</string>
+    <string name="pref_sensor_keep_ready_summary">Сохранять датчик приближения зарегистрированным когда экран включен. Если этот режим отключен, то датчик будет деактивирован каждый раз когда экран включен и активирован снова, когда экран выключен. Это позволит сэкономить немного энергии, но и создаст небольшую задержку активации датчика после выключения экрана.</string>    
+			
+    <!-- THRESHOLDS -->
+
+    <string name="pref_sensor_cover_delay_msec_title">Задержка Закрытия</string>
+    <string name="pref_sensor_cover_delay_msec_summary">Период времени в течении которого датчик приближения игнорирует закрытие. Текущее значение %d мсек.</string>
+    <string name="pref_sensor_cover_delay_msec_dialog_message">Текущее значение задержки закрытия %d мсек.</string>    
+
+    <string name="pref_sensor_uncover_delay_msec_title">Задержка Открытия</string>
+    <string name="pref_sensor_uncover_delay_msec_summary">Период времени в течении которого датчик приближения игнорирует открытие. Текущее значение %d мсек.</string>
+    <string name="pref_sensor_uncover_delay_msec_dialog_message">Текущее значение задержки открытия %d мсек.</string>
+        
+    <string name="pref_sensor_acceptance_window_msec_title">Ожидание Открытия Датчика</string>
+    <string name="pref_sensor_acceptance_window_msec_summary">Период времени, в течение которого датчик должен быть открыт после закрытия для того, чтобы включить экран. Текущее значение %d мсек.</string>
+    <string name="pref_sensor_acceptance_window_msec_dialog_message">Текущее значение периода ожидания %d мсек.</string>      
+    
+    <string name="pref_wakelock_hold_sec_title" >Удерживать Экран Включенным</string>
+    <string name="pref_wakelock_hold_sec_summary">Удерживать экран включенным как минимум %d сек. Если у вас есть привычка использовать камеру или другие приложения непосредственно из экрана блокировки, то установить это значение в "0".</string>
+    <string name="pref_wakelock_hold_sec_dialog_message">Удерживать экран включенным как минимум %d сек.</string>
+    
+    <!-- GVECTOR -->
+        
+    <string name="pref_gvector_enabled_title">Активация Отслеживания Наклона</string>
+    <string name="pref_gvector_enabled_summary">Считывать угол наклона устройства с датчика ускорения. Это позволит блокировать считывание с датчика приближения когда устройство находится в перевернутом положении.</string>     
+	    
+	<string name="pref_gvector_side_view_backward_angle_title">Угол Наклона Назад</string>
+	<string name="pref_gvector_side_view_backward_angle_summary">Найбольший угол наклона назад при котором датчик приближения остается активным %d&#176;.</string>
+	<string name="pref_gvector_side_view_backward_angle_dialog_message">Найбольший угол наклона назад: %d&#176;</string>
+	
+	<string name="pref_gvector_side_view_forward_angle_title">Угол Наклона Вперед</string>
+	<string name="pref_gvector_side_view_forward_angle_summary">Найбольший угол наклона вперед при котором датчик приближения остается активным %d&#176;.</string>
+	<string name="pref_gvector_side_view_forward_angle_dialog_message">Найбольший угол наклона вперед: %d&#176;</string>	
+
+	<string name="pref_gvector_bottom_view_left_angle_title">Угол Наклона Влево</string>
+	<string name="pref_gvector_bottom_view_left_angle_summary">Найбольший угол наклона влево при котором датчик приближения остается активным %d&#176;.</string>
+	<string name="pref_gvector_bottom_view_left_angle_dialog_message">Найбольший угол наклона влево: %d&#176;</string>
+	
+	<string name="pref_gvector_bottom_view_right_angle_title">Угол Наклона Вправо</string>
+	<string name="pref_gvector_bottom_view_right_angle_summary">Найбольший угол наклона вправо при котором датчик приближения остается активным %d&#176;.</string>
+	<string name="pref_gvector_bottom_view_right_angle_dialog_message">Найбольший угол наклона вправо: %d&#176;</string>
+	
+    <!-- VIBRATE -->
+    
+    <string name="pref_sensor_cover_vibrate_enabled_title" >Вибрация при Закрытии</string>
+    <string name="pref_sensor_cover_vibrate_enabled_summary">Активировать вибрацию при закрытии датчика приближения.</string>
+    
+    <string name="pref_sensor_cover_vibrate_msec_title">Длительность Вибрации при Закрытии</string>
+    <string name="pref_sensor_cover_vibrate_msec_summary">Вибрировать %d мсек при регистрации закрытия датчика.</string>
+    <string name="pref_sensor_cover_vibrate_msec_dialog_message">Вибрировать %d мсек при регистрации закрытия датчика.</string>
+    
+    <string name="pref_sensor_uncover_vibrate_enabled_title" >Вибрация при Открытии</string>
+    <string name="pref_sensor_uncover_vibrate_enabled_summary">Активировать вибрацию при открытии датчика приближения.</string>
+    
+    <string name="pref_sensor_uncover_vibrate_msec_title" >Длительность Вибрации при Открытии</string>
+    <string name="pref_sensor_uncover_vibrate_msec_summary">Вибрировать %d мсек при регистрации открытия датчика.</string>  
+    <string name="pref_sensor_uncover_vibrate_msec_dialog_message">Вибрировать %d мсек при регистрации открытия датчика.</string>
+
+    <!-- LED -->
+    
+    <string name="pref_sensor_cover_led_enabled_title">Использовать Светодиодный Индикатор</string>
+    <string name="pref_sensor_cover_led_enabled_summary">Включить светодиодный индикатор при закрытии датчика, если это возможно.</string>
+    
+    <string name="pref_sensor_cover_led_yellow_title">Желтый Светодиодный Индикатор</string>
+    <string name="pref_sensor_cover_led_yellow_summary">Изменить цвет светодиодного индикатора на желтый если уровень заряда батареи меньше %d%%.</string>
+    <string name="pref_sensor_cover_led_yellow_dialog_message">Изменить цвет если уровень заряда батареи меньше %d%%.</string>
+    
+    <string name="pref_sensor_cover_led_red_title">Красный Светодиодный Индикатор</string>
+    <string name="pref_sensor_cover_led_red_summary">Изменить цвет светодиодного индикатора на красный если уровень заряда батареи меньше %d%%.</string>
+    <string name="pref_sensor_cover_led_red_dialog_message">Изменить цвет если уровень заряда батареи меньше %d%%.</string>
+    
+	<!-- DEVICE ADMIN -->  
+    	
+    <string name="receiver_device_admin_label">Выключение Экрана</string>
+    <string name="receiver_device_admin_description">Активируя разрешение &lt;Блокировка экрана&gt; которое принадлежит к группе чувствительных разрешений из семейства Device Administrator вы разрешите программе Wakeup Touch Nexus выключать экран устройства. Это разрешение необходимо для этой функциональности. Это приложение никогда не будет использовать другие разрешения из группы Device Administrator для каких-либо других целей.</string>
+    
+    <!-- OTHER -->
+    
+    <string name="launcher_config_label">WTN Настройки</string>
+    <string name="launcher_screen_off_label">WTN Выключить Экран</string>
+    <string name="activity_config_label">Открыть Настройки</string>
+    <string name="activity_screen_off_label">Выключить Экран</string>  
+    <string name="service_label">WTN Служба</string>  		
+</resources>

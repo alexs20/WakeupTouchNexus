@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <header
+        android:fragment="com.wolandsoft.wtn.pref.GeneralPreferenceFragment"
+        android:icon="@drawable/ic_general"
+        android:summary="@string/pref_header_general_summary"
+        android:title="@string/pref_header_general_title" />
+    <header
+        android:fragment="com.wolandsoft.wtn.pref.ThresholdsPreferenceFragment"
+        android:icon="@drawable/ic_thresholds"
+        android:summary="@string/pref_header_thresholds_summary"
+        android:title="@string/pref_header_thresholds_title" />
+    <header
+        android:fragment="com.wolandsoft.wtn.pref.GVectorPreferenceFragment"
+        android:icon="@drawable/ic_gvector"
+        android:summary="@string/pref_header_gvector_summary"
+        android:title="@string/pref_header_gvector_title" />    
+    <header
+        android:fragment="com.wolandsoft.wtn.pref.VibratePreferenceFragment"
+        android:icon="@drawable/ic_vibrate"
+        android:summary="@string/pref_header_vibrate_summary"
+        android:title="@string/pref_header_vibrate_title" />
+    <header
+        android:fragment="com.wolandsoft.wtn.pref.LedPreferenceFragment"
+        android:icon="@drawable/ic_led"
+        android:summary="@string/pref_header_led_summary"
+        android:title="@string/pref_header_led_title" />
+
+</preference-headers>

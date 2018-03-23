@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright 2014-2018 Alexander Shulgin
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:custom="http://schemas.android.com/apk/res-auto">     
+    <PreferenceCategory
+        android:title="@string/pref_header_vibrate_title">
+        <CheckBoxPreference
+            android:title="@string/pref_sensor_cover_vibrate_enabled_title"
+            android:summary="@string/pref_sensor_cover_vibrate_enabled_summary"            
+            android:key="@string/pref_sensor_cover_vibrate_enable_key"
+            android:defaultValue="@bool/pref_sensor_cover_vibrate_enable_value" />        
+            
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_cover_vibrate_msec_title"
+	        android:summary="@string/pref_sensor_cover_vibrate_msec_summary"
+	        android:key="@string/pref_sensor_cover_vibrate_msec_key"
+	        android:defaultValue="@integer/pref_sensor_cover_vibrate_msec_value"
+	        custom:sliderValueFrom="@integer/pref_sensor_cover_vibrate_msec_min_value"
+	        custom:sliderValueTo="@integer/pref_sensor_cover_vibrate_msec_max_value"  
+	        custom:sliderDialogMessage="@string/pref_sensor_cover_vibrate_msec_dialog_message"
+	        android:dependency="@string/pref_sensor_cover_vibrate_enable_key"  
+		 /> 
+		         
+        <CheckBoxPreference
+            android:title="@string/pref_sensor_uncover_vibrate_enabled_title"
+            android:summary="@string/pref_sensor_uncover_vibrate_enabled_summary"            
+            android:key="@string/pref_sensor_uncover_vibrate_enable_key"
+            android:defaultValue="@bool/pref_sensor_uncover_vibrate_enable_value" />     
+            
+	    <com.wolandsoft.wtn.pref.custom.slider.SliderPreference
+	        android:title="@string/pref_sensor_uncover_vibrate_msec_title"
+	        android:summary="@string/pref_sensor_uncover_vibrate_msec_summary"
+	        android:key="@string/pref_sensor_uncover_vibrate_msec_key"
+	        android:defaultValue="@integer/pref_sensor_uncover_vibrate_msec_value"
+	        custom:sliderValueFrom="@integer/pref_sensor_uncover_vibrate_msec_min_value"
+	        custom:sliderValueTo="@integer/pref_sensor_uncover_vibrate_msec_max_value"  
+	        custom:sliderDialogMessage="@string/pref_sensor_uncover_vibrate_msec_dialog_message"
+	        android:dependency="@string/pref_sensor_uncover_vibrate_enable_key"  
+		 /> 
+		             
+    </PreferenceCategory>     
+</PreferenceScreen>
