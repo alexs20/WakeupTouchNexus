@@ -91,7 +91,11 @@ public class AppPreferenceActivity extends PreferenceActivity implements AppCons
 	}
 
 	@Override
-	protected boolean isValidFragment(String fragmentName) {
-		return true;
+	public boolean isValidFragment(String fragmentName) {
+		return GeneralPreferenceFragment.class.getName().equals(fragmentName) ||
+				GVectorPreferenceFragment.class.getName().equals(fragmentName) ||
+				LedPreferenceFragment.class.getName().equals(fragmentName) ||
+				ThresholdsPreferenceFragment.class.getName().equals(fragmentName) ||
+				VibratePreferenceFragment.class.getName().equals(fragmentName);
 	}
 }
