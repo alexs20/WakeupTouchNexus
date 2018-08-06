@@ -18,6 +18,7 @@ package com.wolandsoft.wtn.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.wolandsoft.wtn.service.SensorMonitorService;
 
@@ -32,7 +33,11 @@ public class SharedEventReceiver extends BroadcastReceiver {
 		Context appCtx = context.getApplicationContext();
 		if (BOOT_COMPLETED.equals(action) || (PACKAGE_REPLACED.equals(action) && intent.getDataString().contains(appCtx.getPackageName()))) {
 			Intent myIntent = new Intent(appCtx, SensorMonitorService.class);
-			appCtx.startService(myIntent);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+				appCtx.startForegroundService(myIntent);
+			} else {
+				appCtx.startService(myIntent);
+			}
 		}
 	}
 }
