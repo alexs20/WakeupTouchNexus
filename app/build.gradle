@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.wolandsoft.wtn"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 57
-        versionName '2.18.57'
+        versionCode 58
+        versionName '2.18.58'
     }
     buildTypes {
         release {
