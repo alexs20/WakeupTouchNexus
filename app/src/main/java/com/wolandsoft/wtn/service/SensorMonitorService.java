@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -14,6 +16,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 
@@ -36,6 +39,8 @@ import com.wolandsoft.wtn.utils.ILog;
 
 public class SensorMonitorService extends Service implements CoverageStateAdapterListener, AppConstants {
 	private final int SERVICE_NOTIFICATION_ID = 1;
+	private final String NOTIFICATION_CHANNEL_ID = "WTL";
+	private final String NOTIFICATION_CHANNEL_NAME = "WTL Notification Channel";
 
 	private SharedPreferences mSharedPref;
 
@@ -227,7 +232,17 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 		Intent showIntent = new Intent(this, activity);
 		showIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, showIntent, 0);
-		Notification.Builder builder = new Notification.Builder(this);
+		// Notification.Builder builder = new Notification.Builder(this);
+		Notification.Builder builder;
+		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME,
+					isTurnOff ? NotificationManager.IMPORTANCE_HIGH : NotificationManager.IMPORTANCE_LOW);
+			notificationManager.createNotificationChannel(notificationChannel);
+			builder = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID);
+		} else {
+			builder = new Notification.Builder(this);
+		}
 		builder.setContentTitle(getText(R.string.app_name));
 		builder.setContentText(intentDesc);
 		builder.setSmallIcon(R.drawable.ic_notif);
