@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Build;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -53,7 +54,12 @@ public abstract class BasePreferenceFragment extends PreferenceFragment implemen
 						getResources().getBoolean(R.bool.pref_service_enabled_value));
 				if (isServiceEnabled) {
 					Context appCtx = getApplicationContext();
-					appCtx.startService(new Intent(appCtx, SensorMonitorService.class));
+					Intent intent = new Intent(appCtx, SensorMonitorService.class);
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+						appCtx.startForegroundService(intent);
+					} else {
+						appCtx.startService(intent);
+					}
 				}
 			}
 		};

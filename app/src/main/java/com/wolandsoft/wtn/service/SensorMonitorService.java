@@ -16,6 +16,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
@@ -236,8 +237,9 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 		Notification.Builder builder;
 		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-			NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME,
-					isTurnOff ? NotificationManager.IMPORTANCE_HIGH : NotificationManager.IMPORTANCE_LOW);
+			NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_NONE);
+			notificationChannel.setLightColor(Color.BLUE);
+			notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 			notificationManager.createNotificationChannel(notificationChannel);
 			builder = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID);
 		} else {
@@ -246,8 +248,8 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 		builder.setContentTitle(getText(R.string.app_name));
 		builder.setContentText(intentDesc);
 		builder.setSmallIcon(R.drawable.ic_notif);
-		Bitmap icon = BitmapFactory.decodeResource(getResources(), iconResId);
-		builder.setLargeIcon(icon);
+		// Bitmap icon = BitmapFactory.decodeResource(getResources(), iconResId);
+		// builder.setLargeIcon(icon);
 		builder.setContentIntent(contentIntent);
 		builder.setWhen(0);
 		builder.setOngoing(true);
