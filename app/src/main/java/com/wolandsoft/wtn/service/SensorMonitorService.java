@@ -20,6 +20,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import com.wolandsoft.wtn.AppConstants;
 import com.wolandsoft.wtn.R;
@@ -39,9 +40,9 @@ import com.wolandsoft.wtn.pref.AppPreferenceActivity;
 import com.wolandsoft.wtn.utils.ILog;
 
 public class SensorMonitorService extends Service implements CoverageStateAdapterListener, AppConstants {
-	private final int SERVICE_NOTIFICATION_ID = 1;
-	private final String NOTIFICATION_CHANNEL_ID = "WTL";
-	private final String NOTIFICATION_CHANNEL_NAME = "WTL Notification Channel";
+	private final int SERVICE_NOTIFICATION_ID = 199;
+	private final String NOTIFICATION_CHANNEL_ID = "WTN";
+	private final String NOTIFICATION_CHANNEL_NAME = "WTN Notification Channel";
 
 	private SharedPreferences mSharedPref;
 
@@ -59,7 +60,6 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 	private BroadcastReceiver mScreenOnOffReceiver;
 
 	private boolean mIsKeepSensorActive = true;
-	private boolean mIsForeground = false;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -72,6 +72,9 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 
 		mHandler = new Handler();
 		mSharedPref = getSharedPreferences(TAG, Context.MODE_MULTI_PROCESS);
+
+		//create notification ASAP
+		startForeground(SERVICE_NOTIFICATION_ID, buildStatusbarNotification());
 
 		mVibratorAdapter = new VibratorAdapter(this);
 		mLedNotifyAdapter = new LedNotifyAdapter(this);
@@ -116,20 +119,11 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		mSharedPref = getSharedPreferences(TAG, Context.MODE_MULTI_PROCESS);
 		boolean isServiceEnabled = getBool(R.string.pref_service_enabled_key, R.bool.pref_service_enabled_value);
-		boolean isBackgroundModeEnabled = getBool(R.string.pref_run_service_background_key, R.bool.pref_run_service_background_value);
 
 		if (!isServiceEnabled) {
 			stopSelf();
 		} else {
-			if (mIsForeground && isBackgroundModeEnabled) {
-				stopForeground(true);
-				mIsForeground = false;
-			} else if (!isBackgroundModeEnabled) {
-				startForeground(SERVICE_NOTIFICATION_ID, buildStatusbarNotification());
-				mIsForeground = true;
-			}
 			applySettings();
-
 		}
 
 		return START_STICKY;
@@ -186,6 +180,9 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 
 		mIsKeepSensorActive = getBool(R.string.pref_sensor_keep_ready_key, R.bool.pref_sensor_keep_ready_value);
 		mProximityStateAdapter.setEnabled(true);
+
+		NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.notify(SERVICE_NOTIFICATION_ID, buildStatusbarNotification());
 	}
 
 	@Override
@@ -237,8 +234,7 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 		Notification.Builder builder;
 		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-			NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_NONE);
-			notificationChannel.setLightColor(Color.BLUE);
+			NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
 			notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 			notificationManager.createNotificationChannel(notificationChannel);
 			builder = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID);
@@ -248,16 +244,12 @@ public class SensorMonitorService extends Service implements CoverageStateAdapte
 		builder.setContentTitle(getText(R.string.app_name));
 		builder.setContentText(intentDesc);
 		builder.setSmallIcon(R.drawable.ic_notif);
-		// Bitmap icon = BitmapFactory.decodeResource(getResources(), iconResId);
-		// builder.setLargeIcon(icon);
 		builder.setContentIntent(contentIntent);
 		builder.setWhen(0);
 		builder.setOngoing(true);
-		try {
-			Method setPriority = Notification.Builder.class.getMethod("setPriority", int.class);
-			Field prioriyHigh = Notification.class.getField(isTurnOff ? "PRIORITY_MAX": "PRIORITY_MIN");
-			setPriority.invoke(builder, prioriyHigh.getInt(null));
-		} catch (Exception e) {
+		builder.setOnlyAlertOnce(true);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+			builder.setPriority(isTurnOff ? Notification.PRIORITY_MAX : Notification.PRIORITY_MIN);
 		}
 		@SuppressWarnings("deprecation")
 		Notification notif = builder.getNotification();

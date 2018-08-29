@@ -39,15 +39,8 @@
             android:key="@string/pref_suspend_on_headset_key"
             android:summary="@string/pref_suspend_on_headset_summary"
             android:title="@string/pref_suspend_on_headset_title" />
-        <CheckBoxPreference
-            android:disableDependentsState="true"
-            android:dependency="@string/pref_service_enabled_key"
-            android:defaultValue="@bool/pref_run_service_background_value"
-            android:key="@string/pref_run_service_background_key"
-            android:summary="@string/pref_run_service_background_summary"
-            android:title="@string/pref_run_service_background_title" />        
         <ListPreference
-            android:dependency="@string/pref_run_service_background_key"            
+            android:dependency="@string/pref_service_enabled_key"
             android:defaultValue="@string/pref_notification_action_value"
             android:entries="@array/pref_notification_action_titles"
             android:entryValues="@array/pref_notification_action_values"
