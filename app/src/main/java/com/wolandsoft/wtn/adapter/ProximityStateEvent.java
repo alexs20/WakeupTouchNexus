@@ -53,7 +53,8 @@ public class ProximityStateEvent {
 	public synchronized void releaseWakeLock(){
 		if(mWakeLock != null){
 			mHandler.removeCallbacks(mReleaser);
-			mWakeLock.release();
+			if (mWakeLock.isHeld())
+				mWakeLock.release();
 			mWakeLock = null;
 		}
 	}
