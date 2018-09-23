@@ -50,9 +50,6 @@
     <string name="pref_suspend_on_headset_title">Suspend When Headset is On</string>
     <string name="pref_suspend_on_headset_summary">Suspend proximity sensor monitoring when headset is on.</string>
 
-    <string name="pref_run_service_background_title">Run Service in Background</string>
-    <string name="pref_run_service_background_summary">When checked the service will run in background mode without notification icon, but with very high chance that system will periodically kill it and proximity sensor will not register events. Not recommended for devices with less than 2 GB RAM. Can not be enabled on Android Oreo.</string>
-    
     <string name="pref_notification_action_title">Notification Activity</string>
     <string name="pref_notification_action_summary">By pressing the notification icon do the following &lt;%s&gt;</string>
 	<string-array name="pref_notification_action_titles">

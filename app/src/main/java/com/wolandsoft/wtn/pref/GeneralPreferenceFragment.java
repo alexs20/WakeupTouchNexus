@@ -48,14 +48,6 @@ public class GeneralPreferenceFragment extends BasePreferenceFragment {
 
 		mAdminCheckbox = (CheckBoxPreference) findPreference(getString(R.string.pref_device_admin_enabled_key));
 		mAdminCheckbox.setChecked(isActiveAdmin());
-
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-			CheckBoxPreference bgService = (CheckBoxPreference) findPreference(getString(R.string.pref_run_service_background_key));
-			bgService.setChecked(false);
-			bgService.setEnabled(false);
-			ListPreference notifAction = (ListPreference) findPreference(getString(R.string.pref_notification_action_key));
-			notifAction.setDependency(null);
-		}
 	}
 
 	private boolean isActiveAdmin() {

@@ -48,10 +48,7 @@
 
     <string name="pref_suspend_on_headset_title">Приостановить при наушниках</string>
     <string name="pref_suspend_on_headset_summary">Приостановить службу считывания данных с датчика приближения если подключены проводные наушники.</string>
-    
-    <string name="pref_run_service_background_title">Исполнять службу в фоновом режиме</string>
-    <string name="pref_run_service_background_summary">Служба датчика приближения будет работать в фоновом режиме без значка уведомления, но с очень высокой вероятностю того, что система будет периодически убивать ее и датчик не будет регистрировать события. Не рекомендуется для устройств с менее 2 ГБ оперативной памяти. Невозможно активировать на Android Oreo.</string>
-    
+
     <string name="pref_notification_action_title">Действие Уведомления</string>
     <string name="pref_notification_action_summary">При нажатии на значек уведомления выполнить следующее действие &lt;%s&gt;</string>
 	<string-array name="pref_notification_action_titles">

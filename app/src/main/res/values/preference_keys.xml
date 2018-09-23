@@ -28,9 +28,6 @@
     
     <item  type="string" name="pref_suspend_on_headset_key" translatable="false">onheadset.suspend</item>   
     <item  type="bool" name="pref_suspend_on_headset_value" translatable="false">false</item>
-
-    <item  type="string" name="pref_run_service_background_key" translatable="false">service.background</item>   
-    <item  type="bool" name="pref_run_service_background_value" translatable="false">false</item>
     
     <item  type="string" name="pref_notification_action_key" translatable="false">notification.action</item>   
     <item  type="string" name="pref_notification_action_value" translatable="false">0</item>    
